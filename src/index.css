@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #0F172A;
+  --color-navy-light: #1E293B;
+  --color-gold: #D4AF37;
+  --color-gold-light: #F1D570;
+  --color-gray-light: #F8FAFC;
+  --color-white: #FFFFFF;
+
+  --font-primary: 'Inter', sans-serif;
+  --font-secondary: 'Playfair Display', serif;
+}
+
+@layer base {
+  body {
+    @apply bg-gray-light text-navy font-primary antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-secondary text-navy;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-lg rounded-2xl;
+  }
+  .btn-primary {
+    @apply bg-navy text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:bg-navy-light hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-navy focus:ring-offset-2;
+  }
+  .btn-secondary {
+    @apply bg-gold text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:bg-gold-light hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2;
+  }
+  .btn-outline {
+    @apply border-2 border-navy text-navy px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:bg-navy hover:text-white focus:outline-none focus:ring-2 focus:ring-navy focus:ring-offset-2;
+  }
+}

@@ -82,7 +82,7 @@ const Hero = () => {
                 <img src="https://i.pravatar.cc/100?img=4" alt="Client" className="w-11 h-11 rounded-full border-2 border-white shadow-sm object-cover" />
               </div>
               <div className="text-left">
-                <div className="text-[#0A101D] font-bold text-lg leading-tight">500+</div>
+                <div className="text-[#0A101D] font-bold text-lg leading-tight">34+</div>
                 <div className="text-gray-600 text-sm font-medium">Lives Supported</div>
               </div>
             </div>

@@ -1,11 +1,11 @@
-﻿import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FaQuoteLeft, FaStar } from 'react-icons/fa';
 
 const stats = [
-  { id: 1, value: 500, label: 'Happy Clients', suffix: '+' },
-  { id: 2, value: 15, label: 'Years Experience', suffix: '+' },
+  { id: 1, value: 34, label: 'Happy Clients', suffix: '+' },
+  { id: 2, value: 6, label: 'Years Experience', suffix: '+' },
   { id: 3, value: 100, label: 'Expert Staff', suffix: '%' },
   { id: 4, value: 24, label: 'Support Available', suffix: '/7' },
 ];

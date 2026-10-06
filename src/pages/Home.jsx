@@ -21,7 +21,7 @@ const Home = () => {
         <WhyChooseUs />
         <HowItWorks />
         <UnderstandingNDIS />
-        <StatsAndTestimonials />
+        {/* <StatsAndTestimonials /> */}
         {/* Simple Image Gallery */}
         <section className="py-2">
           <div className="flex w-full h-[300px] md:h-[400px]">

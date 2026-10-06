@@ -457,7 +457,7 @@ export const servicesData = [
   },
   {
     id: 'my-plan-manager',
-    title: 'My Plan Manager',
+    title: 'Plan Manager',
     description: 'Expert NDIS Plan Management to help you get the most out of your funding with zero stress.',
     icon: FaFileInvoiceDollar,
     image: 'https://res.cloudinary.com/defqgygsf/image/upload/v1791274183/Compassionate_Caregiver_Connection_ruoacj.png',

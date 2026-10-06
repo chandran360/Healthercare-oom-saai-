@@ -1,15 +1,17 @@
-﻿import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaArrowLeft, FaCheck, FaChevronDown } from 'react-icons/fa';
 import { servicesData } from '../utils/constants';
+import ParticipantIntakeModal from '../components/common/ParticipantIntakeModal';
 
 const ServiceDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [service, setService] = useState(null);
   const [activeFaqIndex, setActiveFaqIndex] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     // Find the service by ID
@@ -215,16 +217,21 @@ const ServiceDetails = () => {
             <p className="text-lg md:text-xl text-gray-300 mb-8 md:mb-12 max-w-2xl mx-auto leading-relaxed">
               Our team is here to answer your questions, assess your needs, and design a tailored plan that perfectly aligns with your goals.
             </p>
-            <Link
-              to="/contact"
-              state={{ service: service.id }}
+            <button
+              onClick={() => setIsModalOpen(true)}
               className="inline-flex items-center justify-center w-full sm:w-auto px-8 md:px-10 py-4 md:py-5 text-base md:text-lg font-bold text-navy bg-gradient-to-r from-gold to-yellow-400 rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
             >
               Inquire Now About This Service
-            </Link>
+            </button>
           </div>
         </section>
       </main>
+
+      <ParticipantIntakeModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)}
+        selectedService={service?.title}
+      />
     </>
   );
 };

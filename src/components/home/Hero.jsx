@@ -76,10 +76,10 @@ const Hero = () => {
             {/* Avatars & Lives Supported */}
             <div className="flex items-center gap-4">
               <div className="flex -space-x-3">
-                <img src="https://i.pravatar.cc/100?img=1" alt="Client" className="w-11 h-11 rounded-full border-2 border-white shadow-sm object-cover" />
-                <img src="https://i.pravatar.cc/100?img=2" alt="Client" className="w-11 h-11 rounded-full border-2 border-white shadow-sm object-cover" />
-                <img src="https://i.pravatar.cc/100?img=3" alt="Client" className="w-11 h-11 rounded-full border-2 border-white shadow-sm object-cover" />
-                <img src="https://i.pravatar.cc/100?img=4" alt="Client" className="w-11 h-11 rounded-full border-2 border-white shadow-sm object-cover" />
+                <img src="/profile.jpg" alt="Happy Client" className="w-11 h-11 rounded-full border-2 border-white shadow-sm object-cover" />
+                <img src="/profile.jpg" alt="Happy Client" className="w-11 h-11 rounded-full border-2 border-white shadow-sm object-cover" />
+                <img src="/profile.jpg" alt="Happy Client" className="w-11 h-11 rounded-full border-2 border-white shadow-sm object-cover" />
+                <img src="/profile.jpg" alt="Happy Client" className="w-11 h-11 rounded-full border-2 border-white shadow-sm object-cover" />
               </div>
               <div className="text-left">
                 <div className="text-[#0A101D] font-bold text-lg leading-tight">34+</div>

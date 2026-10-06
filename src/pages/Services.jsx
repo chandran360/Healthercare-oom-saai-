@@ -1,10 +1,15 @@
-﻿import { Helmet } from 'react-helmet-async';
+import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import PageHeader from '../components/common/PageHeader';
 import { servicesData } from '../utils/constants';
+import ParticipantIntakeModal from '../components/common/ParticipantIntakeModal';
 
 const Services = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState('');
+
   return (
     <>
       <Helmet>
@@ -84,13 +89,15 @@ const Services = () => {
                         </Link>
 
                         {/* Inquire Now Button */}
-                        <Link
-                          to="/contact"
-                          state={{ service: service.id }}
+                        <button
+                          onClick={() => {
+                            setSelectedService(service.title);
+                            setIsModalOpen(true);
+                          }}
                           className="btn-outline border border-navy text-navy rounded-full text-center py-2 px-6 text-sm font-semibold hover:bg-navy hover:text-white transition-all duration-300 w-full sm:w-auto"
                         >
                           Inquire Now
-                        </Link>
+                        </button>
                       </div>
 
                     </div>
@@ -117,6 +124,12 @@ const Services = () => {
           </div>
         </section>
       </main>
+
+      <ParticipantIntakeModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)}
+        selectedService={selectedService}
+      />
     </>
   );
 };

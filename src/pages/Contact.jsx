@@ -1,15 +1,18 @@
 import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaClock } from 'react-icons/fa';
 import PageHeader from '../components/common/PageHeader';
+import { servicesData } from '../utils/constants';
 
 const Contact = () => {
+  const location = useLocation();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
-    service: '',
+    service: location.state?.service || '',
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -34,8 +37,8 @@ const Contact = () => {
   return (
     <>
       <Helmet>
-        <title>Contact Us | Allarewellcare Disability Support</title>
-        <meta name="description" content="Get in touch with Allarewellcare for disability support services. We are here to answer your questions and help you navigate your NDIS plan." />
+        <title>Contact Us | Astute Softcare Disability Support</title>
+        <meta name="description" content="Get in touch with Astute Softcare for disability support services. We are here to answer your questions and help you navigate your NDIS plan." />
       </Helmet>
 
       <main>
@@ -68,7 +71,7 @@ const Contact = () => {
                     <div>
                       <h4 className="text-xl font-bold text-navy mb-1">Call Us</h4>
                       <p className="text-gray-500 mb-1">We are available Mon-Fri, 9am-5pm</p>
-                      <a href="tel:1800123456" className="text-lg font-semibold text-navy hover:text-gold transition-colors">1800 123 456</a>
+                      <a href="tel:0433504551" className="text-lg font-semibold text-navy hover:text-gold transition-colors">0433 504 551</a>
                     </div>
                   </div>
 
@@ -79,7 +82,7 @@ const Contact = () => {
                     <div>
                       <h4 className="text-xl font-bold text-navy mb-1">Email Us</h4>
                       <p className="text-gray-500 mb-1">Send us an email anytime</p>
-                      <a href="mailto:hello@Allarewellcare.example.com" className="text-lg font-semibold text-navy hover:text-gold transition-colors">hello@allarewellcare.com</a>
+                      <a href="mailto:hello@Astute Softcare.example.com" className="text-lg font-semibold text-navy hover:text-gold transition-colors">hello@Astute Softcare.com</a>
                     </div>
                   </div>
 
@@ -89,8 +92,8 @@ const Contact = () => {
                     </div>
                     <div>
                       <h4 className="text-xl font-bold text-navy mb-1">Visit Us</h4>
-                      <p className="text-gray-500 mb-1">123 Support Avenue</p>
-                      <p className="text-lg font-semibold text-navy">Healthcare District, Sydney 2000</p>
+                      <p className="text-gray-500 mb-1">216 Lance Road</p>
+                      <p className="text-lg font-semibold text-navy">North Maclean QLD 4280</p>
                     </div>
                   </div>
                 </div>
@@ -170,21 +173,9 @@ const Contact = () => {
                         className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-gold focus:border-transparent outline-none transition-all bg-white"
                       >
                         <option value="">Select a service</option>
-                        <option value="transport-assistance">Transport Assistance</option>
-                        <option value="behaviour-support">Behaviour Support</option>
-                        <option value="in-home-care">In-Home Care</option>
-                        <option value="therapeutic-supports">Therapeutic Supports</option>
-                        <option value="cleaning">Cleaning</option>
-                        <option value="gardening">Gardening</option>
-                        <option value="finding-and-keeping-a-job">Finding and Keeping a Job</option>
-                        <option value="shared-accommodation">Shared Accommodation</option>
-                        <option value="support-coordination">Support Coordination</option>
-                        <option value="community-access">Community Access</option>
-                        <option value="in-door-activities">In-Door Activities</option>
-                        <option value="out-door-activities">Out-Door Activities</option>
-                        <option value="daily-meal-preparation-support">Daily Meal Preparation Support</option>
-                        <option value="development-of-daily-living-and-life-skills">Development of Daily Living and Life Skills</option>
-                        <option value="supported-independent-living-mta-sta-sda-sil">Supported Independent Living - MTA, STA, SDA, SIL</option>
+                        {servicesData.map(service => (
+                          <option key={service.id} value={service.id}>{service.title}</option>
+                        ))}
                         <option value="other">Other / General Inquiry</option>
                       </select>
                     </div>
@@ -230,7 +221,7 @@ const Contact = () => {
         {/* Google Map Embedded (Iframe Placeholder) */}
         <section className="h-[400px] w-full bg-gray-200 relative">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3312.86884639943!2d151.20708577570417!3d-33.86725227322699!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12ae401a8b983f%3A0x5017d681632a850!2sSydney%20NSW%2C%20Australia!5e0!3m2!1sen!2sus!4v1709668388450!5m2!1sen!2sus"
+            src="https://maps.google.com/maps?width=100%25&height=600&hl=en&q=216%20Lance%20Road,%20North%20Maclean%20QLD%204280+(Astute%20Softcare)&t=&z=14&ie=UTF8&iwloc=B&output=embed"
             width="100%"
             height="100%"
             style={{ border: 0 }}

@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async';
+﻿import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import PageHeader from '../components/common/PageHeader';
 import { FaCheckCircle } from 'react-icons/fa';
@@ -31,8 +31,8 @@ const About = () => {
   return (
     <>
       <Helmet>
-        <title>About Us | Allarewellcare Disability Support</title>
-        <meta name="description" content="Learn about Allarewellcare's mission, vision, values, and meet our professional team of disability support workers." />
+        <title>About Us | Astute Softcare Disability Support</title>
+        <meta name="description" content="Learn about Astute Softcare's mission, vision, values, and meet our professional team of disability support workers." />
       </Helmet>
 
       <main>

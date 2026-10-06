@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -32,7 +32,7 @@ const ServiceDetails = () => {
   return (
     <>
       <Helmet>
-        <title>{service.title} | Allarewellcare Disability Support</title>
+        <title>{service.title} | Astute Softcare Disability Support</title>
         <meta name="description" content={service.description} />
       </Helmet>
 
@@ -88,7 +88,6 @@ const ServiceDetails = () => {
               {/* Detailed Description */}
               <section>
                 <div className="flex items-center space-x-4 mb-6">
-                  <div className="w-12 h-1 bg-gold rounded-full"></div>
                   <h2 className="text-2xl md:text-3xl font-bold text-navy font-secondary">About This Service</h2>
                 </div>
                 <div className="prose prose-base md:prose-lg text-gray-600 leading-relaxed max-w-none whitespace-pre-line">
@@ -121,7 +120,6 @@ const ServiceDetails = () => {
               {/* How We Help / Features */}
               <section>
                 <div className="flex items-center space-x-4 mb-8">
-                  <div className="w-12 h-1 bg-gold rounded-full"></div>
                   <h2 className="text-2xl md:text-3xl font-bold text-navy font-secondary">How We Support You</h2>
                 </div>
                 <ul className="space-y-4">
@@ -219,6 +217,7 @@ const ServiceDetails = () => {
             </p>
             <Link
               to="/contact"
+              state={{ service: service.id }}
               className="inline-flex items-center justify-center w-full sm:w-auto px-8 md:px-10 py-4 md:py-5 text-base md:text-lg font-bold text-navy bg-gradient-to-r from-gold to-yellow-400 rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
             >
               Inquire Now About This Service

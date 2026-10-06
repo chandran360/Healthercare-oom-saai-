@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async';
+﻿import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import PageHeader from '../components/common/PageHeader';
@@ -8,7 +8,7 @@ const Services = () => {
   return (
     <>
       <Helmet>
-        <title>Our Services | Allarewellcare Disability Support</title>
+        <title>Our Services | Astute Softcare Disability Support</title>
         <meta name="description" content="Explore our comprehensive range of NDIS and disability support services including Daily Living Support, Personal Care, and Community Participation." />
       </Helmet>
 
@@ -86,6 +86,7 @@ const Services = () => {
                         {/* Inquire Now Button */}
                         <Link
                           to="/contact"
+                          state={{ service: service.id }}
                           className="btn-outline border border-navy text-navy rounded-full text-center py-2 px-6 text-sm font-semibold hover:bg-navy hover:text-white transition-all duration-300 w-full sm:w-auto"
                         >
                           Inquire Now

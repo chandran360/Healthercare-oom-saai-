@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+﻿import { motion } from 'framer-motion';
 import { FaUserMd, FaHeart, FaShieldAlt, FaClock } from 'react-icons/fa';
 
 const features = [
@@ -43,10 +43,10 @@ const WhyChooseUs = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <span className="text-gold font-semibold tracking-wider uppercase text-sm">Why Choose Allarewellcare</span>
+              <span className="text-gold font-semibold tracking-wider uppercase text-sm">Why Choose Astute Softcare</span>
               <h2 className="text-4xl md:text-5xl font-bold mt-2 mb-6">Experience the Difference in Disability Care</h2>
               <p className="text-gray-600 mb-8 text-lg leading-relaxed">
-                At Allarewellcare, we believe that disability support should be as unique as the individuals we serve. We don't just provide services; we build lasting relationships based on trust, respect, and a genuine desire to see you thrive.
+                At Astute Softcare, we believe that disability support should be as unique as the individuals we serve. We don't just provide services; we build lasting relationships based on trust, respect, and a genuine desire to see you thrive.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">

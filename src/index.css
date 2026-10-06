@@ -15,6 +15,14 @@
 @layer base {
   body {
     @apply bg-gray-light text-navy font-primary antialiased;
+    /* Hide scrollbar for IE, Edge and Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  body::-webkit-scrollbar {
+    display: none;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-secondary text-navy;

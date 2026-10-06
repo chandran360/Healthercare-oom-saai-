@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FaQuoteLeft, FaStar } from 'react-icons/fa';
@@ -15,14 +15,14 @@ const testimonials = [
     id: 1,
     name: 'Sarah Jenkins',
     role: 'NDIS Participant',
-    content: 'The support workers from Allarewellcare have completely transformed my life. They are so compassionate and always go above and beyond to ensure I can participate in my community.',
+    content: 'The support workers from Astute Softcare have completely transformed my life. They are so compassionate and always go above and beyond to ensure I can participate in my community.',
     image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80',
   },
   {
     id: 2,
     name: 'Michael Thompson',
     role: 'Family Member',
-    content: 'We were struggling to find the right care for our son until we found Allarewellcare. The level of professionalism and genuine care is outstanding. We finally have peace of mind.',
+    content: 'We were struggling to find the right care for our son until we found Astute Softcare. The level of professionalism and genuine care is outstanding. We finally have peace of mind.',
     image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80',
   },
 ];

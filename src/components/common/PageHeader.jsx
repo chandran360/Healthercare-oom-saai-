@@ -37,7 +37,7 @@ const PageHeader = ({ title, breadcrumb, bgImage }) => {
           className="flex justify-center items-center space-x-2 text-gray-300 font-medium"
         >
           <span>Home</span>
-          <span className="text-gold">•</span>
+          <span className="text-gold">/</span>
           <span className="text-white">{breadcrumb || title}</span>
         </motion.div>
       </div>

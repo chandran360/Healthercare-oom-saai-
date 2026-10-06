@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FaPhoneAlt, FaEnvelope } from 'react-icons/fa'; // லோகோக்கள் சரியாக இம்போர்ட் செய்யப்பட்டுள்ளது
+import { FaPhoneAlt, FaEnvelope } from 'react-icons/fa'; // à®²à¯‹à®•à¯‹à®•à¯à®•à®³à¯ à®šà®°à®¿à®¯à®¾à®• à®‡à®®à¯à®ªà¯‹à®°à¯à®Ÿà¯ à®šà¯†à®¯à¯à®¯à®ªà¯à®ªà®Ÿà¯à®Ÿà¯à®³à¯à®³à®¤à¯
 
 const ContactBanner = () => {
   return (
@@ -36,7 +36,7 @@ const ContactBanner = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          // பட்டன்கள் அழகாக அமைய flex-wrap மற்றும் gap சேர்க்கப்பட்டுள்ளது
+          // à®ªà®Ÿà¯à®Ÿà®©à¯à®•à®³à¯ à®…à®´à®•à®¾à®• à®…à®®à¯ˆà®¯ flex-wrap à®®à®±à¯à®±à¯à®®à¯ gap à®šà¯‡à®°à¯à®•à¯à®•à®ªà¯à®ªà®Ÿà¯à®Ÿà¯à®³à¯à®³à®¤à¯
           className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-4"
         >
           {/* Contact Us Now Button */}
@@ -49,20 +49,20 @@ const ContactBanner = () => {
           
           {/* Phone Number Button with Real Logo */}
           <a 
-            href="tel:1800123456" 
+            href="tel:0433504551" 
             className="btn-outline border-white text-white hover:bg-white hover:text-navy px-6 py-3.5 text-base font-semibold flex items-center justify-center gap-3 rounded-lg border-2 transition-all duration-300 group w-full sm:w-auto"
           >
             <FaPhoneAlt className="w-4 h-4 text-white group-hover:text-navy transition-colors duration-300" />
-            <span>Call 1800 123 456</span>
+            <span>Call 0433 504 551</span>
           </a>
 
           {/* Email ID Button with Real Logo */}
           <a 
-            href="mailto:hello@Allarewellcare.example.com" 
+            href="mailto:hello@Astute Softcare.example.com" 
             className="btn-outline border-white text-white hover:bg-white hover:text-navy px-6 py-3.5 text-base font-semibold flex items-center justify-center gap-3 rounded-lg border-2 transition-all duration-300 group w-full sm:w-auto"
           >
             <FaEnvelope className="w-4 h-4 text-white group-hover:text-navy transition-colors duration-300" />
-            <span>hello@Allarewellcare.example.com</span>
+            <span>hello@Astute Softcare.example.com</span>
           </a>
         </motion.div>
       </div>

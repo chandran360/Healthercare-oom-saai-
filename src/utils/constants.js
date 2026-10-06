@@ -1,23 +1,25 @@
-import { 
-  FaCar, 
-  FaBrain, 
-  FaUserShield, 
-  FaHandsHelping, 
-  FaBroom, 
-  FaLeaf, 
-  FaBriefcase, 
-  FaHome, 
-  FaRoute, 
-  FaUsers, 
-  FaGamepad, 
-  FaUtensils, 
-  FaUniversalAccess 
+import {
+  FaCar,
+  FaBrain,
+  FaUserShield,
+  FaHandsHelping,
+  FaBroom,
+  FaLeaf,
+  FaBriefcase,
+  FaHome,
+  FaRoute,
+  FaUsers,
+  FaGamepad,
+  FaUtensils,
+  FaUniversalAccess,
+  FaFileInvoiceDollar
 } from 'react-icons/fa';
 
 export const navLinks = [
   { name: 'Home', path: '/' },
   { name: 'About', path: '/about' },
   { name: 'Services', path: '/services' },
+  { name: 'NDIS Support', path: '/ndis-support' },
   { name: 'Contact Us', path: '/contact' },
 ];
 
@@ -53,36 +55,36 @@ export const servicesData = [
     ],
     gallery: []
   },
-  {
-    id: 'behaviour-support',
-    title: 'Behaviour Support',
-    description: 'Specialized approaches to help individuals manage challenging behaviors in a respectful, positive way.',
-    icon: FaBrain,
-    image: 'https://images.unsplash.com/photo-1573497620053-ea5300f94f21?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    bannerImage: 'https://images.unsplash.com/photo-1573497620053-ea5300f94f21?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80',
-    fullDescription: `Our Behaviour Support service is designed to help individuals with complex needs manage challenging behaviours in a respectful and positive way. We work closely with participants, families, and support teams to understand the underlying causes and develop personalised strategies that enhance wellbeing and daily functioning. Our ultimate goal is to reduce restrictive practices, improve overall quality of life, and support safe, meaningful participation in home and community settings.`,
-    benefits: [
-      'Reduced instances of challenging or high-risk behaviors',
-      'Enhanced coping mechanisms for families and caregivers',
-      'Safer home and community engagement environments',
-      'Improved emotional regulation and clarity'
-    ],
-    supportFeatures: [
-      'Comprehensive behavioural assessments',
-      'Development of Positive Behaviour Support Plans (PBSP)',
-      'Training for carers and frontline support workers',
-      'Ongoing monitoring and dynamic plan adjustments',
-      'Active collaboration with therapists and healthcare professionals'
-    ],
-    eligibility: 'Available to NDIS participants with approved Positive Behaviour Support capacity-building budgets.',
-    faqs: [
-      {
-        question: 'What is a Positive Behaviour Support Plan (PBSP)?',
-        answer: 'It is a tailored document created by specialists outlining proactive steps to support the person and minimize triggers safely.'
-      }
-    ],
-    gallery: []
-  },
+  // {
+  //   id: 'behaviour-support',
+  //   title: 'Behaviour Support',
+  //   description: 'Specialized approaches to help individuals manage challenging behaviors in a respectful, positive way.',
+  //   icon: FaBrain,
+  //   image: 'https://images.unsplash.com/photo-1573497620053-ea5300f94f21?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+  //   bannerImage: 'https://images.unsplash.com/photo-1573497620053-ea5300f94f21?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80',
+  //   fullDescription: `Our Behaviour Support service is designed to help individuals with complex needs manage challenging behaviours in a respectful and positive way. We work closely with participants, families, and support teams to understand the underlying causes and develop personalised strategies that enhance wellbeing and daily functioning. Our ultimate goal is to reduce restrictive practices, improve overall quality of life, and support safe, meaningful participation in home and community settings.`,
+  //   benefits: [
+  //     'Reduced instances of challenging or high-risk behaviors',
+  //     'Enhanced coping mechanisms for families and caregivers',
+  //     'Safer home and community engagement environments',
+  //     'Improved emotional regulation and clarity'
+  //   ],
+  //   supportFeatures: [
+  //     'Comprehensive behavioural assessments',
+  //     'Development of Positive Behaviour Support Plans (PBSP)',
+  //     'Training for carers and frontline support workers',
+  //     'Ongoing monitoring and dynamic plan adjustments',
+  //     'Active collaboration with therapists and healthcare professionals'
+  //   ],
+  //   eligibility: 'Available to NDIS participants with approved Positive Behaviour Support capacity-building budgets.',
+  //   faqs: [
+  //     {
+  //       question: 'What is a Positive Behaviour Support Plan (PBSP)?',
+  //       answer: 'It is a tailored document created by specialists outlining proactive steps to support the person and minimize triggers safely.'
+  //     }
+  //   ],
+  //   gallery: []
+  // },
   {
     id: 'in-home-care',
     title: 'In-Home Care',
@@ -90,7 +92,7 @@ export const servicesData = [
     icon: FaUserShield,
     image: 'https://res.cloudinary.com/defqgygsf/image/upload/v1782186730/ChatGPT_Image_Jun_23_2026_09_21_52_AM_smjtiy.png',
     bannerImage: 'https://res.cloudinary.com/defqgygsf/image/upload/v1782186730/ChatGPT_Image_Jun_23_2026_09_21_52_AM_smjtiy.png',
-    fullDescription: `Our In-Home Care service provides personalised support to NDIS participants in the comfort and familiarity of their own homes. We focus on promoting independence, dignity, and safety while assisting with daily activities that support a healthy and fulfilling lifestyle. Our trained support workers deliver care that respects each individual's needs, routines, and preferences—ensuring comfort, consistency, and peace of mind for participants and their families.`,
+    fullDescription: `Our In-Home Care service provides personalised support to NDIS participants in the comfort and familiarity of their own homes. We focus on promoting independence, dignity, and safety while assisting with daily activities that support a healthy and fulfilling lifestyle. Our trained support workers deliver care that respects each individual's needs, routines, and preferencesâ€”ensuring comfort, consistency, and peace of mind for participants and their families.`,
     benefits: [
       'Maintained comfort within your own residential space',
       'Peace of mind for active family members and caregivers',
@@ -121,7 +123,7 @@ export const servicesData = [
     icon: FaHandsHelping,
     image: 'https://res.cloudinary.com/defqgygsf/image/upload/v1782190216/ChatGPT_Image_Jun_23_2026_10_20_00_AM_oemde6.png',
     bannerImage: 'https://res.cloudinary.com/defqgygsf/image/upload/v1782190216/ChatGPT_Image_Jun_23_2026_10_20_00_AM_oemde6.png',
-    fullDescription: `Our Therapeutic Supports are designed to help NDIS participants build skills, improve daily functioning, and enhance overall wellbeing. Delivered by qualified professionals, these supports are personalised to meet individual goals across physical, emotional, social, and behavioural areas. We work closely with participants, families, and support teams to deliver evidence-based therapies that foster independence, confidence, and quality of life in everyday settings—at home, in the community, or via telehealth.`,
+    fullDescription: `Our Therapeutic Supports are designed to help NDIS participants build skills, improve daily functioning, and enhance overall wellbeing. Delivered by qualified professionals, these supports are personalised to meet individual goals across physical, emotional, social, and behavioural areas. We work closely with participants, families, and support teams to deliver evidence-based therapies that foster independence, confidence, and quality of life in everyday settingsâ€”at home, in the community, or via telehealth.`,
     benefits: [
       'Improved mobility, posture, and physical capacity',
       'Enhanced speech, language, and interactive expression',
@@ -175,7 +177,7 @@ export const servicesData = [
     icon: FaLeaf,
     image: 'https://res.cloudinary.com/defqgygsf/image/upload/v1782187367/ChatGPT_Image_Jun_23_2026_09_32_25_AM_jpapdp.png',
     bannerImage: 'https://res.cloudinary.com/defqgygsf/image/upload/v1782187367/ChatGPT_Image_Jun_23_2026_09_32_25_AM_jpapdp.png',
-    fullDescription: `Our Gardening service helps NDIS participants enjoy a safe, tidy, and welcoming outdoor space. Whether it's maintaining a backyard or simply enjoying time in the garden, we provide friendly, reliable support suited to each individual's needs and abilities. We aim to create outdoor environments that promote wellbeing, independence, and enjoyment—while also offering participants the chance to be involved in gardening activities if they wish.`,
+    fullDescription: `Our Gardening service helps NDIS participants enjoy a safe, tidy, and welcoming outdoor space. Whether it's maintaining a backyard or simply enjoying time in the garden, we provide friendly, reliable support suited to each individual's needs and abilities. We aim to create outdoor environments that promote wellbeing, independence, and enjoymentâ€”while also offering participants the chance to be involved in gardening activities if they wish.`,
     benefits: [
       'Maintained structural clearings preventing slips and falls',
       'Beautifully manicured gardens boosting therapeutic mental health',
@@ -196,35 +198,35 @@ export const servicesData = [
     ],
     gallery: []
   },
-  {
-    id: 'finding-and-keeping-a-job',
-    title: 'Finding and Keeping a Job',
-    description: 'Practical assistance to build the confidence, skills, and experience needed for employment.',
-    icon: FaBriefcase,
-    image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    bannerImage: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80',
-    fullDescription: `Our Finding and Keeping a Job service supports NDIS participants in preparing for, gaining, and maintaining meaningful employment. We provide personalised, practical assistance to help individuals build the confidence, skills, and experience needed to enter or rejoin the workforce. We believe that everyone has the right to meaningful work. Our goal is to help participants become work-ready, connect with the right opportunities, and thrive in supportive, inclusive workplaces.`,
-    benefits: [
-      'Financial independence through structured workforce placement',
-      'Enhanced personal identity, routine, and professional skillset',
-      'Direct navigation alongside inclusive local employers'
-    ],
-    supportFeatures: [
-      'Identifying job goals and career interests',
-      'Resume writing and interview preparation',
-      'On-the-job support and workplace adjustments',
-      'Skill-building and pre-employment training',
-      'Support with work placements or volunteer opportunities'
-    ],
-    eligibility: 'Fits NDIS Capacity Building line items for Employment/Finding and Keeping a Job.',
-    faqs: [
-      {
-        question: 'Do you help once I actually secure the job?',
-        answer: 'Yes, on-the-job support helps you transition, learn workflows, and settle into the workplace with adjustments.'
-      }
-    ],
-    gallery: []
-  },
+  // {
+  //   id: 'finding-and-keeping-a-job',
+  //   title: 'Finding and Keeping a Job',
+  //   description: 'Practical assistance to build the confidence, skills, and experience needed for employment.',
+  //   icon: FaBriefcase,
+  //   image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+  //   bannerImage: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80',
+  //   fullDescription: `Our Finding and Keeping a Job service supports NDIS participants in preparing for, gaining, and maintaining meaningful employment. We provide personalised, practical assistance to help individuals build the confidence, skills, and experience needed to enter or rejoin the workforce. We believe that everyone has the right to meaningful work. Our goal is to help participants become work-ready, connect with the right opportunities, and thrive in supportive, inclusive workplaces.`,
+  //   benefits: [
+  //     'Financial independence through structured workforce placement',
+  //     'Enhanced personal identity, routine, and professional skillset',
+  //     'Direct navigation alongside inclusive local employers'
+  //   ],
+  //   supportFeatures: [
+  //     'Identifying job goals and career interests',
+  //     'Resume writing and interview preparation',
+  //     'On-the-job support and workplace adjustments',
+  //     'Skill-building and pre-employment training',
+  //     'Support with work placements or volunteer opportunities'
+  //   ],
+  //   eligibility: 'Fits NDIS Capacity Building line items for Employment/Finding and Keeping a Job.',
+  //   faqs: [
+  //     {
+  //       question: 'Do you help once I actually secure the job?',
+  //       answer: 'Yes, on-the-job support helps you transition, learn workflows, and settle into the workplace with adjustments.'
+  //     }
+  //   ],
+  //   gallery: []
+  // },
   {
     id: 'shared-accommodation',
     title: 'Shared Accommodation',
@@ -290,7 +292,7 @@ export const servicesData = [
     icon: FaUsers,
     image: 'https://res.cloudinary.com/defqgygsf/image/upload/v1782189892/ChatGPT_Image_Jun_23_2026_10_14_35_AM_wdjpn7.png',
     bannerImage: 'https://res.cloudinary.com/defqgygsf/image/upload/v1782189892/ChatGPT_Image_Jun_23_2026_10_14_35_AM_wdjpn7.png',
-    fullDescription: `Our Community Access service is designed to support NDIS participants in engaging with their local community, building social connections, and participating in meaningful activities outside the home. Whether it's a daily outing or a special event, we support participants to be active, included, and connected within their community—while always respecting their goals, preferences, and comfort levels.`,
+    fullDescription: `Our Community Access service is designed to support NDIS participants in engaging with their local community, building social connections, and participating in meaningful activities outside the home. Whether it's a daily outing or a special event, we support participants to be active, included, and connected within their communityâ€”while always respecting their goals, preferences, and comfort levels.`,
     benefits: [
       'Active inclusion in neighborhood groups and events',
       'Reduced social isolation and enhanced interactive confidence',
@@ -347,7 +349,7 @@ export const servicesData = [
     icon: FaLeaf,
     image: 'https://res.cloudinary.com/defqgygsf/image/upload/v1782188817/ChatGPT_Image_Jun_23_2026_09_55_51_AM_zsenow.png',
     bannerImage: 'https://res.cloudinary.com/defqgygsf/image/upload/v1782188817/ChatGPT_Image_Jun_23_2026_09_55_51_AM_zsenow.png',
-    fullDescription: `Our Outdoor Activities service is designed to support NDIS participants in enjoying fresh air, nature, and physical wellbeing through safe, engaging experiences outside the home. Whether it's a calm day in the park or a fun community outing, we support participants to stay active, connected, and confident in the outdoors—always respecting their goals, comfort, and pace.`,
+    fullDescription: `Our Outdoor Activities service is designed to support NDIS participants in enjoying fresh air, nature, and physical wellbeing through safe, engaging experiences outside the home. Whether it's a calm day in the park or a fun community outing, we support participants to stay active, connected, and confident in the outdoorsâ€”always respecting their goals, comfort, and pace.`,
     benefits: [
       'Direct vitamin D absorption and outdoor tracking benefits',
       'Cardio health tracking via structured park walks',
@@ -376,7 +378,7 @@ export const servicesData = [
     icon: FaUtensils,
     image: 'https://res.cloudinary.com/defqgygsf/image/upload/v1782188953/4720613364-feeding-home-care_yorfqi.jpg',
     bannerImage: 'https://res.cloudinary.com/defqgygsf/image/upload/v1782188953/4720613364-feeding-home-care_yorfqi.jpg',
-    fullDescription: `Our Nutritious Meal service ensures that participants receive well-balanced, healthy meals tailored to their dietary needs, health conditions, and cultural preferences. We understand the importance of proper nutrition in promoting overall wellbeing and maintaining energy for daily activities. Whether participants need full assistance or just a helping hand, our team makes sure they enjoy tasty, nutritious meals every day—promoting independence, dignity, and a healthier lifestyle.`,
+    fullDescription: `Our Nutritious Meal service ensures that participants receive well-balanced, healthy meals tailored to their dietary needs, health conditions, and cultural preferences. We understand the importance of proper nutrition in promoting overall wellbeing and maintaining energy for daily activities. Whether participants need full assistance or just a helping hand, our team makes sure they enjoy tasty, nutritious meals every dayâ€”promoting independence, dignity, and a healthier lifestyle.`,
     benefits: [
       'Consistent access to healthy, freshly made dishes',
       'Strict adherence to specific medical or allergic needs',
@@ -429,7 +431,7 @@ export const servicesData = [
   },
   {
     id: 'supported-independent-living-mta-sta-sda-sil',
-    title: 'Supported Independent Living - MTA, STA, SDA, SIL',
+    title: 'Supported Independent Living -SDA, SIL',
     description: 'Tailored accommodation arrangements designed to help participants live as independently as possible.',
     icon: FaUniversalAccess,
     image: 'https://res.cloudinary.com/defqgygsf/image/upload/v1782189588/ChatGPT_Image_Jun_23_2026_10_09_28_AM_cgehpp.png',
@@ -449,6 +451,41 @@ export const servicesData = [
       {
         question: 'What is the maximum limit for MTA housing?',
         answer: 'Medium-Term Accommodation usually covers standard periods up to 90 days while permanent spaces solidify.'
+      }
+    ],
+    gallery: []
+  },
+  {
+    id: 'my-plan-manager',
+    title: 'My Plan Manager',
+    description: 'Expert NDIS Plan Management to help you get the most out of your funding with zero stress.',
+    icon: FaFileInvoiceDollar,
+    image: 'https://res.cloudinary.com/defqgygsf/image/upload/v1791274183/Compassionate_Caregiver_Connection_ruoacj.png',
+    bannerImage: 'https://res.cloudinary.com/defqgygsf/image/upload/v1791274183/Compassionate_Caregiver_Connection_ruoacj.png',
+    fullDescription: `Navigating the NDIS and managing your funding can be complicated and time-consuming. We step in to take the burden off your shoulders. With our dedicated plan management services, you receive industry-leading fraud protection, rapid invoice payments, and an intuitive online dashboard to track your funds. We simplify the financial side of your NDIS plan so you can focus entirely on achieving your goals and living your best life.`,
+    benefits: [
+      'Stay on top of your NDIS budget with ease',
+      'Hassle-free coordination with your service providers',
+      'We handle all communication with the NDIA regarding your claims',
+      'Rapid and reliable payment of your invoices',
+      'Clear, up-to-date reporting on your financial status'
+    ],
+    supportFeatures: [
+      'Advanced security to protect your funds',
+      'Quick turnaround times for invoice processing',
+      'Personalised advice from NDIS specialists',
+      'Easy-to-navigate digital tracking portal',
+      'Real-time visibility into your budget balance'
+    ],
+    eligibility: 'Open to all NDIS participants who have "Improved Life Choices" (Plan Management) funded in their plan.',
+    faqs: [
+      {
+        question: 'How can I add plan management to my NDIS plan?',
+        answer: 'If you do not currently have funding allocated for a plan manager, simply inform your NDIA planner or Local Area Coordinator that you would like a plan manager to assist you.'
+      },
+      {
+        question: 'Will I have to pay anything out of pocket?',
+        answer: 'No, there are no out-of-pocket costs for you. Our fees are covered entirely by the NDIS if plan management is included in your plan.'
       }
     ],
     gallery: []

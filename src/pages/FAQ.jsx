@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaChevronDown, FaSearch } from 'react-icons/fa';
@@ -21,7 +21,7 @@ const FAQ = () => {
   return (
     <>
       <Helmet>
-        <title>FAQ | Allarewellcare Disability Support</title>
+        <title>FAQ | Astute Softcare Disability Support</title>
         <meta name="description" content="Find answers to common questions about our disability support services, NDIS funding, and how we can help you." />
       </Helmet>
 

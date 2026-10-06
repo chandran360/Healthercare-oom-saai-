@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { HiMenu, HiX } from 'react-icons/hi';
+import { FaRegCalendarAlt, FaArrowRight } from 'react-icons/fa';
 import { navLinks } from '../../utils/constants';
 
 const Navbar = () => {
@@ -33,13 +34,15 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           <Link to="/" className="flex items-center" onClick={closeMenu}>
-            <span className={`text-2xl font-secondary font-bold ${scrolled ? 'text-navy' : 'text-white md:text-white'} drop-shadow-sm`}>
-              Allarewellcare<span className="text-gold">.</span>
-            </span>
+            <img 
+              src="/Astute Softcare Heart Care Logo.png" 
+              alt="Astute Softcare" 
+              className="h-12 md:h-14 w-auto object-contain"
+            />
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6 lg:space-x-10">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
@@ -47,20 +50,28 @@ const Navbar = () => {
                 className={`font-medium transition-colors hover:text-gold ${
                   location.pathname === link.path
                     ? 'text-gold'
-                    : scrolled ? 'text-navy' : 'text-navy lg:text-white'
+                    : (location.pathname !== '/' && !scrolled ? 'text-white' : 'text-navy')
                 }`}
               >
                 {link.name}
               </Link>
             ))}
-          
+            
+            <Link
+              to="/contact"
+              className="flex items-center gap-2 bg-[#FDCB58] text-[#0A101D] px-5 lg:px-6 py-2.5 rounded-full font-bold hover:bg-[#FBBF24] transition-all shadow-sm hover:shadow-md group"
+            >
+              <FaRegCalendarAlt className="w-4 h-4" />
+              <span>Book a Consultation</span>
+              <FaArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
             <button
               onClick={toggleMenu}
-              className={`text-3xl focus:outline-none ${scrolled ? 'text-navy' : 'text-white'}`}
+              className={`text-3xl focus:outline-none ${location.pathname !== '/' && !scrolled ? 'text-white' : 'text-navy'}`}
             >
               {isOpen ? <HiX /> : <HiMenu />}
             </button>

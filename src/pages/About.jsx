@@ -6,24 +6,24 @@ import CompanyIntroduction from '../components/common/Introduction';
 
 const teamMembers = [
   {
-    name: 'Dr. Emily Chen',
-    role: 'Clinical Director',
-    image: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80'
+    name: 'Plan Manager',
+    role: '',
+    image: '/Minimalist Gray Profile Avatar.png'
   },
   {
-    name: 'James Wilson',
-    role: 'Head of Operations',
-    image: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80'
+    name: 'Support Coordinator',
+    role: '',
+    image: '/Minimalist Gray Profile Avatar.png'
   },
   {
-    name: 'Sarah O\'Connor',
-    role: 'Senior Care Coordinator',
-    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80'
+    name: 'Therapist',
+    role: '',
+    image: '/Minimalist Gray Profile Avatar.png'
   },
   {
-    name: 'David Patel',
-    role: 'Support Specialist',
-    image: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80'
+    name: 'Support Worker',
+    role: '',
+    image: 'Minimalist Gray Profile Avatar.png'
   }
 ];
 

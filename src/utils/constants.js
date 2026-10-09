@@ -23,7 +23,7 @@ export const navLinks = [
   { name: 'Contact Us', path: '/contact' },
 ];
 
-
+export const FORM_SUBMIT_EMAIL = 'fd4668c796b075a70eb50876c5a69625';
 
 export const servicesData = [
   {

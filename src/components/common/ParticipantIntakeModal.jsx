@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaClipboardList, FaCheckCircle, FaTimes } from 'react-icons/fa';
+import { FORM_SUBMIT_EMAIL } from '../../utils/constants';
 
 const ParticipantIntakeModal = ({ isOpen, onClose, selectedService }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
 
   useEffect(() => {
     if (isOpen) {
@@ -18,20 +20,45 @@ const ParticipantIntakeModal = ({ isOpen, onClose, selectedService }) => {
     };
   }, [isOpen]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSuccess(true);
-      // Close after showing success for a bit
-      setTimeout(() => {
-        setIsSuccess(false);
-        onClose();
-      }, 3000);
-      e.target.reset();
-    }, 1500);
+    setErrorMsg('');
+    
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData.entries());
+    
+    data._subject = "New Participant Intake Form Submission - Astute Softcare";
+    data._template = "table";
+
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${FORM_SUBMIT_EMAIL}`, {
+        method: "POST",
+        headers: { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+      
+      const result = await response.json();
+      
+      if (result.success) {
+        setIsSubmitting(false);
+        setIsSuccess(true);
+        setTimeout(() => {
+          setIsSuccess(false);
+          onClose();
+        }, 3000);
+        e.target.reset();
+      } else {
+        throw new Error('Failed to submit form');
+      }
+    } catch (error) {
+        setIsSubmitting(false);
+        setErrorMsg('Failed to send message. Please try again later.');
+        console.error(error);
+    }
   };
 
   if (!isOpen) return null;
@@ -74,7 +101,12 @@ const ParticipantIntakeModal = ({ isOpen, onClose, selectedService }) => {
                 </div>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-10">
+                            <form onSubmit={handleSubmit} className="space-y-10">
+                {errorMsg && (
+                  <div className="bg-red-50 text-red-800 p-4 rounded-xl border border-red-200 text-sm">
+                    {errorMsg}
+                  </div>
+                )}
                 {/* Section 1: Participant Details */}
                 <div className="space-y-6">
                   <h3 className="text-xl font-bold text-navy flex items-center gap-2">
@@ -94,17 +126,17 @@ const ParticipantIntakeModal = ({ isOpen, onClose, selectedService }) => {
 
                     <div className="md:col-span-2">
                       <label className="block text-sm font-semibold text-gray-700 mb-2">Participant Name *</label>
-                      <input type="text" required className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all bg-white" />
+                      <input type="text" name="participant_name" required className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all bg-white" />
                     </div>
                     
                     <div>
                       <label className="block text-sm font-semibold text-gray-700 mb-2">D.O.B *</label>
-                      <input type="date" required className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all bg-white" />
+                      <input type="date" name="dob" required className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all bg-white" />
                     </div>
                     
                     <div>
                       <label className="block text-sm font-semibold text-gray-700 mb-2">Gender</label>
-                      <select className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all bg-white">
+                      <select name="gender" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all bg-white">
                         <option value="">Select Gender</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
@@ -115,27 +147,27 @@ const ParticipantIntakeModal = ({ isOpen, onClose, selectedService }) => {
 
                     <div className="md:col-span-2">
                       <label className="block text-sm font-semibold text-gray-700 mb-2">NDIS Number</label>
-                      <input type="text" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all bg-white" />
+                      <input type="text" name="ndis_number" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all bg-white" />
                     </div>
 
                     <div>
                       <label className="block text-sm font-semibold text-gray-700 mb-2">Contact Details (Home)</label>
-                      <input type="tel" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all bg-white" />
+                      <input type="tel" name="contact_home" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all bg-white" />
                     </div>
 
                     <div>
                       <label className="block text-sm font-semibold text-gray-700 mb-2">Contact Details (Mobile) *</label>
-                      <input type="tel" required className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all bg-white" />
+                      <input type="tel" name="contact_mobile" required className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all bg-white" />
                     </div>
 
                     <div className="md:col-span-2">
                       <label className="block text-sm font-semibold text-gray-700 mb-2">Email Address *</label>
-                      <input type="email" required className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all bg-white" />
+                      <input type="email" name="email" required className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all bg-white" />
                     </div>
 
                     <div>
                       <label className="block text-sm font-semibold text-gray-700 mb-2">Language Spoken at Home</label>
-                      <input type="text" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all bg-white" />
+                      <input type="text" name="language" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all bg-white" />
                     </div>
 
                     <div>
@@ -156,15 +188,15 @@ const ParticipantIntakeModal = ({ isOpen, onClose, selectedService }) => {
                       <label className="block text-sm font-semibold text-gray-700 mb-3">Preferred option for communication</label>
                       <div className="flex flex-wrap gap-6">
                         <label className="flex items-center gap-2 cursor-pointer">
-                          <input type="checkbox" className="w-4 h-4 rounded text-gold focus:ring-gold" />
+                          <input type="checkbox" name="comm_email" value="Yes" className="w-4 h-4 rounded text-gold focus:ring-gold" />
                           <span>Email</span>
                         </label>
                         <label className="flex items-center gap-2 cursor-pointer">
-                          <input type="checkbox" className="w-4 h-4 rounded text-gold focus:ring-gold" />
+                          <input type="checkbox" name="comm_phone" value="Yes" className="w-4 h-4 rounded text-gold focus:ring-gold" />
                           <span>Phone</span>
                         </label>
                         <label className="flex items-center gap-2 cursor-pointer">
-                          <input type="checkbox" className="w-4 h-4 rounded text-gold focus:ring-gold" />
+                          <input type="checkbox" name="comm_post" value="Yes" className="w-4 h-4 rounded text-gold focus:ring-gold" />
                           <span>Post</span>
                         </label>
                       </div>
@@ -186,12 +218,12 @@ const ParticipantIntakeModal = ({ isOpen, onClose, selectedService }) => {
 
                     <div className="md:col-span-2">
                       <label className="block text-sm font-semibold text-gray-700 mb-2">Residential Address *</label>
-                      <textarea rows="2" required className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all resize-none bg-white"></textarea>
+                      <textarea rows="2" name="residential_address" required className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all resize-none bg-white"></textarea>
                     </div>
 
                     <div className="md:col-span-2">
                       <label className="block text-sm font-semibold text-gray-700 mb-2">Postal Address (if different from above)</label>
-                      <textarea rows="2" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all resize-none bg-white"></textarea>
+                      <textarea rows="2" name="postal_address" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all resize-none bg-white"></textarea>
                     </div>
                   </div>
                 </div>
@@ -251,7 +283,7 @@ const ParticipantIntakeModal = ({ isOpen, onClose, selectedService }) => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="md:col-span-2">
                         <label className="block text-sm font-semibold text-gray-700 mb-2">Full Name</label>
-                        <input type="text" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all bg-white" />
+                        <input type="text" name="g1_name" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all bg-white" />
                       </div>
 
                       <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -310,27 +342,27 @@ const ParticipantIntakeModal = ({ isOpen, onClose, selectedService }) => {
 
                       <div className="md:col-span-2">
                         <label className="block text-sm font-semibold text-gray-700 mb-2">Residential Address</label>
-                        <textarea rows="2" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all resize-none bg-white"></textarea>
+                        <textarea rows="2" name="g1_residential_address" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all resize-none bg-white"></textarea>
                       </div>
 
                       <div className="md:col-span-2">
                         <label className="block text-sm font-semibold text-gray-700 mb-2">Postal Address (if different from above)</label>
-                        <textarea rows="2" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all resize-none bg-white"></textarea>
+                        <textarea rows="2" name="g1_postal_address" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all resize-none bg-white"></textarea>
                       </div>
 
                       <div>
                         <label className="block text-sm font-semibold text-gray-700 mb-2">Contact Details (Home)</label>
-                        <input type="tel" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all bg-white" />
+                        <input type="tel" name="g1_contact_home" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all bg-white" />
                       </div>
 
                       <div>
                         <label className="block text-sm font-semibold text-gray-700 mb-2">Contact Details (Mobile)</label>
-                        <input type="tel" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all bg-white" />
+                        <input type="tel" name="g1_contact_mobile" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all bg-white" />
                       </div>
 
                       <div className="md:col-span-2">
                         <label className="block text-sm font-semibold text-gray-700 mb-2">Email Address</label>
-                        <input type="email" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all bg-white" />
+                        <input type="email" name="g1_email" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all bg-white" />
                       </div>
                     </div>
                   </div>
@@ -343,12 +375,12 @@ const ParticipantIntakeModal = ({ isOpen, onClose, selectedService }) => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="md:col-span-2">
                         <label className="block text-sm font-semibold text-gray-700 mb-2">Full Name</label>
-                        <input type="text" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all bg-white" />
+                        <input type="text" name="g2_name" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all bg-white" />
                       </div>
                       {/* ... other optional fields omitted for brevity but they are handled gracefully by CSS ... */}
                       <div className="md:col-span-2">
                         <label className="block text-sm font-semibold text-gray-700 mb-2">Contact Details (Mobile)</label>
-                        <input type="tel" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all bg-white" />
+                        <input type="tel" name="g2_contact_mobile" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all bg-white" />
                       </div>
                     </div>
                   </div>

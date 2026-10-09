@@ -3,8 +3,10 @@ import { useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaClock } from 'react-icons/fa';
+import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input';
+import 'react-phone-number-input/style.css';
 import PageHeader from '../components/common/PageHeader';
-import { servicesData } from '../utils/constants';
+import { servicesData, FORM_SUBMIT_EMAIL } from '../utils/constants';
 
 const Contact = () => {
   const location = useLocation();
@@ -15,6 +17,7 @@ const Contact = () => {
     service: location.state?.service || '',
     message: ''
   });
+  const [phoneError, setPhoneError] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
@@ -22,16 +25,59 @@ const Contact = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handlePhoneChange = (value) => {
+    setFormData({ ...formData, phone: value });
+    if (value && !isValidPhoneNumber(value)) {
+      setPhoneError('Please enter a valid phone number for this country');
+    } else {
+      setPhoneError('');
+    }
+  };
+
+  const [errorMsg, setErrorMsg] = useState('');
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!formData.phone || !isValidPhoneNumber(formData.phone)) {
+      setPhoneError('Please enter a valid phone number before submitting');
+      return;
+    }
     setIsSubmitting(true);
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSuccess(true);
-      setFormData({ name: '', email: '', phone: '', service: '', message: '' });
-      setTimeout(() => setIsSuccess(false), 5000);
-    }, 1500);
+    setErrorMsg('');
+    
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${FORM_SUBMIT_EMAIL}`, {
+        method: "POST",
+        headers: { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            service: formData.service || "General Inquiry",
+            message: formData.message,
+            _subject: "New Contact Form Submission - Astute Softcare",
+            _template: "table"
+        })
+      });
+      
+      const data = await response.json();
+      
+      if (data.success) {
+        setIsSubmitting(false);
+        setIsSuccess(true);
+        setFormData({ name: '', email: '', phone: '', service: '', message: '' });
+        setTimeout(() => setIsSuccess(false), 5000);
+      } else {
+        throw new Error('Failed to submit form');
+      }
+    } catch (error) {
+        setIsSubmitting(false);
+        setErrorMsg('Failed to send message. Please try again later.');
+        console.error(error);
+    }
   };
 
   return (
@@ -82,7 +128,7 @@ const Contact = () => {
                     <div>
                       <h4 className="text-xl font-bold text-navy mb-1">Email Us</h4>
                       <p className="text-gray-500 mb-1">Send us an email anytime</p>
-                      <a href="mailto:hello@Astute Softcare.example.com" className="text-lg font-semibold text-navy hover:text-gold transition-colors">hello@Astute Softcare.com</a>
+                      <a href="mailto:support@astutesoftcare.com.au" className="text-lg font-semibold text-navy hover:text-gold transition-colors">support@astutesoftcare.com.au</a>
                     </div>
                   </div>
 
@@ -92,8 +138,8 @@ const Contact = () => {
                     </div>
                     <div>
                       <h4 className="text-xl font-bold text-navy mb-1">Visit Us</h4>
-                      <p className="text-gray-500 mb-1">216 Lance Road</p>
-                      <p className="text-lg font-semibold text-navy">North Maclean QLD 4280</p>
+                      <p className="text-gray-500 mb-1">2 Norfolk Street</p>
+                      <p className="text-lg font-semibold text-navy">Springfield Lakes, QLD 4300</p>
                     </div>
                   </div>
                 </div>
@@ -120,6 +166,11 @@ const Contact = () => {
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
+                    {errorMsg && (
+                      <div className="bg-red-50 text-red-800 p-4 rounded-xl border border-red-200 text-sm">
+                        {errorMsg}
+                      </div>
+                    )}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       <div>
                         <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
@@ -136,16 +187,40 @@ const Contact = () => {
                       </div>
                       <div>
                         <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
-                        <input
-                          type="tel"
-                          id="phone"
-                          name="phone"
-                          required
-                          value={formData.phone}
-                          onChange={handleChange}
-                          className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-gold focus:border-transparent outline-none transition-all"
-                          placeholder="0000 000 000"
-                        />
+                        <style>{`
+                          .PhoneInput {
+                            display: flex;
+                            align-items: center;
+                          }
+                          .PhoneInputInput {
+                            flex: 1;
+                            min-width: 0;
+                            border: none;
+                            outline: none;
+                            background: transparent;
+                            padding: 0.5rem;
+                          }
+                          .PhoneInputCountry {
+                            margin-right: 0.5rem;
+                            padding-left: 0.5rem;
+                          }
+                        `}</style>
+                        <div className={`flex w-full px-2 py-2 rounded-xl border ${phoneError ? 'border-red-500' : 'border-gray-200'} focus-within:ring-2 focus-within:ring-gold focus-within:border-transparent transition-all bg-white`}>
+                          <PhoneInput
+                            international
+                            defaultCountry="AU"
+                            limitMaxLength={true}
+                            value={formData.phone}
+                            onChange={handlePhoneChange}
+                            className="w-full"
+                          />
+                        </div>
+                        {phoneError && (
+                          <p className="text-red-500 text-xs mt-1">{phoneError}</p>
+                        )}
+                        {!phoneError && formData.phone && isValidPhoneNumber(formData.phone) && (
+                          <p className="text-green-600 text-xs mt-1">Valid phone number</p>
+                        )}
                       </div>
                     </div>
 
@@ -221,7 +296,7 @@ const Contact = () => {
         {/* Google Map Embedded (Iframe Placeholder) */}
         <section className="h-[400px] w-full bg-gray-200 relative">
           <iframe
-            src="https://maps.google.com/maps?width=100%25&height=600&hl=en&q=216%20Lance%20Road,%20North%20Maclean%20QLD%204280+(Astute%20Softcare)&t=&z=14&ie=UTF8&iwloc=B&output=embed"
+            src="https://maps.google.com/maps?width=100%25&height=600&hl=en&q=2%20Norfolk%20Street,%20Springfield%20Lakes,%20QLD%204300&t=&z=14&ie=UTF8&iwloc=B&output=embed"
             width="100%"
             height="100%"
             style={{ border: 0 }}

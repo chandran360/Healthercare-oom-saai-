@@ -58,11 +58,11 @@ const ContactBanner = () => {
 
           {/* Email ID Button with Real Logo */}
           <a 
-            href="mailto:hello@Astute Softcare.example.com" 
+            href="mailto:support@astutesoftcare.com.au" 
             className="btn-outline border-white text-white hover:bg-white hover:text-navy px-6 py-3.5 text-base font-semibold flex items-center justify-center gap-3 rounded-lg border-2 transition-all duration-300 group w-full sm:w-auto"
           >
             <FaEnvelope className="w-4 h-4 text-white group-hover:text-navy transition-colors duration-300" />
-            <span>hello@Astute Softcare.example.com</span>
+            <span>support@astutesoftcare.com.au</span>
           </a>
         </motion.div>
       </div>

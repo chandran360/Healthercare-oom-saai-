@@ -1,4 +1,4 @@
-﻿import { Helmet } from 'react-helmet-async';
+import { Helmet } from 'react-helmet-async';
 import PageHeader from '../components/common/PageHeader';
 
 const TermsOfService = () => {
@@ -294,7 +294,7 @@ const TermsOfService = () => {
                       </li>
                       <li className="flex items-start">
                         <span className="font-semibold w-24 flex-shrink-0 text-navy">Email:</span>
-                        <a href="mailto:[Insert official email address]" className="text-gold hover:underline break-all">[Insert official email address]</a>
+                        <a href="mailto:support@astutesoftcare.com.au" className="text-gold hover:underline break-all">support@astutesoftcare.com.au</a>
                       </li>
                       <li className="flex items-start">
                         <span className="font-semibold w-24 flex-shrink-0 text-navy">Phone:</span>
@@ -302,7 +302,7 @@ const TermsOfService = () => {
                       </li>
                       <li className="flex items-start">
                         <span className="font-semibold w-24 flex-shrink-0 text-navy">Address:</span>
-                        <span>[Insert Australian business address]</span>
+                        <span>2 Norfolk Street, Springfield Lakes, QLD 4300</span>
                       </li>
                     </ul>
                   </div>
